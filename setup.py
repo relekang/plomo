@@ -13,7 +13,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'plomo = plomo:main',
+            'plomo = plomo.plomo:main',
         ]
     }
 )

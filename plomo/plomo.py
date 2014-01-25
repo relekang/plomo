@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
 import re
+import sys
 from pyexif import ExifEditor
-from cameras import CAMERAS
+
+from .cameras import CAMERAS
 
 
 def is_jpg(path):
@@ -11,11 +13,16 @@ def is_jpg(path):
 
 def manipulate_exif(path, camera):
     ee = ExifEditor(path)
+    success = True
     for key in CAMERAS[camera]:
         try:
             ee.setTag(key, CAMERAS[camera][key])
-        except Exception, e:
-            print(e)
+        except:
+            success = False
+    if success:
+        sys.stdout.write('.')
+    else:
+        sys.stdout.write('F')
 
 
 def manipulate_files(path, camera):
