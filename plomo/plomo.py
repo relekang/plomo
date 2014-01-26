@@ -14,9 +14,9 @@ def is_jpg(path):
 def manipulate_exif(path, camera):
     ee = ExifEditor(path)
     success = True
-    for key in CAMERAS[camera]:
+    for key in camera:
         try:
-            ee.setTag(key, CAMERAS[camera][key])
+            ee.setTag(key, camera[key])
         except:
             success = False
     if success:
@@ -35,16 +35,29 @@ def manipulate_files(path, camera):
 
 def main():
     import argparse
+
+    def existing_path(string):
+        if os.path.exists(string):
+            return string
+        raise argparse.ArgumentTypeError('The path does not exist')
+
+    def camera_type(string):
+        if string in CAMERAS:
+            return CAMERAS[string]
+        raise argparse.ArgumentTypeError('Unknown camera')
+
     parser = argparse.ArgumentParser()
     parser.add_argument(
         'path',
         help='Path to the photo or the folder containing the photos '
-             'you want to manipulate the EXIF information'
+             'you want to manipulate the EXIF information',
+        type=existing_path
     )
     parser.add_argument(
         'camera',
         help='Choose one of the following cameras: "%s"' %
-             '", "'.join(CAMERAS.keys())
+             '", "'.join(CAMERAS.keys()),
+        type=camera_type
     )
     args = parser.parse_args()
 

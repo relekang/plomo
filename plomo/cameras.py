@@ -13,5 +13,4 @@ CAMERAS = {
         'ExposureTime': '1/100',
         'ApertureValue': '8'
     }
-
 }
