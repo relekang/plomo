@@ -1,15 +1,15 @@
 CAMERAS = {
-    'fisheye2': {
+    'fisheye1': {
         'Make': 'Lomography',
-        'Model': '"Fisheye 2"',
+        'Model': 'Fisheye One',
         'FocalLength':  '10mm',
         'ExposureTime': '1/100',
         'ApertureValue': '8'
     },
-    'lasardina': {
+    'fisheye2': {
         'Make': 'Lomography',
-        'Model': '"La Sardina"',
-        'FocalLength':  '22mm',
+        'Model': '"Fisheye No. 2"',
+        'FocalLength':  '10mm',
         'ExposureTime': '1/100',
         'ApertureValue': '8'
     },
@@ -26,5 +26,12 @@ CAMERAS = {
         'FocalLength':  '60mm',
         'ExposureTime': '1/100',
         'ApertureValue': '8'  
+    },
+    'lasardina': {
+        'Make': 'Lomography',
+        'Model': '"La Sardina"',
+        'FocalLength':  '22mm',
+        'ExposureTime': '1/100',
+        'ApertureValue': '8'
     }
 }
