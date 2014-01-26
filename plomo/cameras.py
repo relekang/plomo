@@ -40,5 +40,15 @@ CAMERAS = {
         'FocalLength':  '22mm',
         'ExposureTime': '1/100',
         'ApertureValue': '8'
+    },
+    'lca': {
+        'Make': 'Lomo',
+        'Model': '"LC-A"',
+        'FocalLength':  '32mm'
+    },
+    'lcw': {
+        'Make': 'Lomo',
+        'Model': '"LC-W"',
+        'FocalLength':  '17mm'
     }
 }
