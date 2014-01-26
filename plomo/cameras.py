@@ -1,4 +1,11 @@
 CAMERAS = {
+    'dianaf+': {
+        'Make': 'Lomography',
+        'Model': 'Diana F+',
+        'FocalLength':  '75mm',
+        'ExposureTime': '1/100',
+        'ApertureValue': '8'
+    },
     'fisheye1': {
         'Make': 'Lomography',
         'Model': 'Fisheye One',
