@@ -61,10 +61,7 @@ def main():
     )
     args = parser.parse_args()
 
-    if os.path.exists(args.path):
-        manipulate_files(args.path, args.camera)
-    else:
-        print('File or folder does not exist')
+    manipulate_files(args.path, args.camera)
 
 
 if __name__ == '__main__':
