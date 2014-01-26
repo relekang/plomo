@@ -11,7 +11,7 @@ def is_jpg(path):
     return bool(re.search('\.jpe?g$', path))
 
 
-def manipulate_exif(path, camera):
+def manipulate_exif(path, camera, quiet=False):
     ee = ExifEditor(path)
     success = True
     for key in camera:
@@ -19,10 +19,13 @@ def manipulate_exif(path, camera):
             ee.setTag(key, camera[key])
         except:
             success = False
+    if quiet:
+        return success
     if success:
         sys.stdout.write('.')
     else:
         sys.stdout.write('F')
+    return success
 
 
 def manipulate_files(path, camera):
