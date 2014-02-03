@@ -4,7 +4,7 @@ import re
 import sys
 from pyexif import ExifEditor
 
-from .cameras import CAMERAS
+from .equipment import CAMERAS
 
 
 def is_jpg(path):

@@ -3,7 +3,7 @@ import tkFileDialog
 import tkMessageBox
 import tkFont
 
-from .cameras import CAMERAS
+from .equipment import CAMERAS
 from .plomo import manipulate_files
 
 
