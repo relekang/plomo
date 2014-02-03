@@ -8,19 +8,21 @@ from .plomo import manipulate_files
 
 
 class PlomoApp(tk.Frame):
-    def __init__(self, master=None):
+    def __init__(self, master=None, path=None, camera=None):
         if master is None:
             master = tk.Tk()
         master.minsize(400, 100)
         tk.Frame.__init__(self, master)
         self.grid()
         self.customFont = tkFont.Font(weight=tkFont.BOLD)
-        self.create_variables()
-        self.create_widgets()
-
-    def create_variables(self):
         self.path = tk.StringVar()
         self.camera = tk.StringVar()
+        self.create_widgets()
+
+        if path:
+            self.path.set(path)
+        if camera:
+            self.camera.set(camera)
 
     def create_widgets(self):
         self.path_title_label = tk.Label(self, text='Directory:',
@@ -38,7 +40,9 @@ class PlomoApp(tk.Frame):
                                            font=self.customFont)
         self.camera_title_label.grid(row=2, column=0, sticky='W')
 
-        self.camera_option = tk.OptionMenu(self, self.camera, *CAMERAS.keys())
+        options = CAMERAS.keys()
+        options.sort()
+        self.camera_option = tk.OptionMenu(self, self.camera, *options)
         self.camera_option.grid(row=2, column=1)
 
         self.save_button = tk.Button(self, text='Save', command=self.save)

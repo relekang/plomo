@@ -17,7 +17,7 @@ def manipulate_exif(path, camera, quiet=False):
     for key in camera:
         try:
             ee.setTag(key, camera[key])
-        except Exception, e:
+        except:
             success = False
     if quiet:
         return success
@@ -40,9 +40,9 @@ def manipulate_files(path, camera):
     return success
 
 
-def open_gui():
+def open_gui(path=None, camera=None):
     from .gui import PlomoApp
-    app = PlomoApp()
+    app = PlomoApp(path=path, camera=camera)
     app.master.title('Plomo')
     app.mainloop()
 
@@ -57,14 +57,19 @@ def main():
 
     def camera_type(string):
         if string in CAMERAS:
-            return CAMERAS[string]
+            return string
         raise argparse.ArgumentTypeError('Unknown camera')
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
+        '-g', '--gui',
+        help='View the graphical interface',
+        action='store_true'
+    )
+    parser.add_argument(
         '--path',
         help='Path to the photo or the folder containing the photos '
-             'you want to manipulate the EXIF information',
+             'you want to manipulate the Exif information',
         type=existing_path
     )
     parser.add_argument(
@@ -75,8 +80,10 @@ def main():
     )
     args = parser.parse_args()
 
-    if args.path and args.camera:
-        manipulate_files(args.path, args.camera)
+    if args.gui:
+        open_gui(args.path, args.camera)
+    elif args.path and args.camera:
+        manipulate_files(args.path, CAMERAS[args.camera])
     else:
         open_gui()
 
